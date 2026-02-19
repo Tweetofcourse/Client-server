@@ -1,23 +1,18 @@
 import React from "react";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { CalculatorPage } from "./pages/calculatorPage";
 import { HistoryPage } from "./pages/History";
 import "./App.css";
+import {useState} from "react";
 
 export default function App(): React.ReactElement {
+  const [showCalculatorPage, setshowCalculatorPage] = useState<boolean>(true);
   return (
-    <BrowserRouter>
       <div className="app-container">
-        <nav className="app-nav">
-          <Link to="/">Calculator</Link>
-          <Link to="/history">History</Link>
-        </nav>
+        
+        { (showCalculatorPage == true ?<CalculatorPage /> : <HistoryPage />)}
+        <button onClick={() => setshowCalculatorPage(!showCalculatorPage)}>Click me</button>
 
-        <Routes>
-          <Route path="/" element={<CalculatorPage />} />
-          <Route path="/history" element={<HistoryPage />} />
-        </Routes>
+         
       </div>
-    </BrowserRouter>
   );
 }

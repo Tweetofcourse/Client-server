@@ -1,0 +1,10 @@
+/* History page styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
