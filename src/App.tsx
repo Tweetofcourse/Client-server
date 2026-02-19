@@ -1,12 +1,14 @@
+import React from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import { CalculatorPage } from "./pages/CalculatorPage";
-import { HistoryPage } from "./pages/HistoryPage";
+import { CalculatorPage } from "./pages/calculatorPage";
+import { HistoryPage } from "./pages/History";
+import "./App.css";
 
-export default function App(): JSX.Element {
+export default function App(): React.ReactElement {
   return (
     <BrowserRouter>
-      <div style={{ padding: 12, fontFamily: "system-ui" }}>
-        <nav style={{ display: "flex", gap: 12, marginBottom: 12 }}>
+      <div className="app-container">
+        <nav className="app-nav">
           <Link to="/">Calculator</Link>
           <Link to="/history">History</Link>
         </nav>

@@ -4,7 +4,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true
-  }
+  },
 
   "files": [],
   "references": [

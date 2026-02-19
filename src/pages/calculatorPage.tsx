@@ -1,7 +1,9 @@
 import { useMemo, useState } from "react";
+import type { JSX } from "react";
 import type { Op } from "../types";
 import type { EvaluationPayload } from "../types";
 import { API_BASE_URL } from "../config";
+import "./calculatorPage.css";
 
 type AnswerState =
   | { kind: "empty" }
@@ -67,47 +69,47 @@ export function CalculatorPage(): JSX.Element {
   }
 
   return (
-    <div style={{ maxWidth: 600, margin: "2rem auto", fontFamily: "system-ui" }}>
+    <div className="calculator-container">
       <h1>Calculator</h1>
 
-      <div style={{ display: "flex", gap: 12 }}>
-        <label style={{ flex: 1 }}>
+      <div className="inputs-wrapper">
+        <label className="input-label">
           First number
           <input
             type="number"
             value={aText}
             onChange={(e) => setAText(e.target.value)}
-            style={{ width: "100%", padding: 8 }}
+            className="number-input"
           />
         </label>
 
-        <label style={{ flex: 1 }}>
+        <label className="input-label">
           Second number
           <input
             type="number"
             value={bText}
             onChange={(e) => setBText(e.target.value)}
-            style={{ width: "100%", padding: 8 }}
+            className="number-input"
           />
         </label>
       </div>
 
-      <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
+      <div className="buttons-wrapper">
         <button onClick={() => void compute("+")}>Add</button>
         <button onClick={() => void compute("-")}>Subtract</button>
         <button onClick={() => void compute("*")}>Multiply</button>
         <button onClick={() => void compute("/")}>Divide</button>
       </div>
 
-      <div style={{ marginTop: 16, padding: 12, border: "1px solid #ddd" }}>
+      <div className="answer-section">
         <h2>Answer</h2>
 
         {status.kind === "empty" && <p>Enter numbers and click a button.</p>}
         {status.kind === "error" && (
-          <p style={{ color: "crimson" }}>{status.message}</p>
+          <p className="error-message">{status.message}</p>
         )}
         {status.kind === "ready" && (
-          <p style={{ fontSize: 22 }}>
+          <p className="result-text">
             {status.a} {status.op} {status.b} = {status.answer}
           </p>
         )}

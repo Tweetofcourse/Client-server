@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { API_BASE_URL } from "../config";
 import type { EvaluationRow } from "../types";
+import "./History.css";
 
-export function HistoryPage(): JSX.Element {
+export function HistoryPage(): React.ReactElement {
   const [rows, setRows] = useState<EvaluationRow[]>([]);
   const [error, setError] = useState<string | null>(null);
 
@@ -30,21 +31,21 @@ export function HistoryPage(): JSX.Element {
   }, []);
 
   return (
-    <div style={{ maxWidth: 900, margin: "2rem auto", fontFamily: "system-ui" }}>
+    <div className="history-container">
       <h1>History</h1>
 
-      {error && <p style={{ color: "crimson" }}>{error}</p>}
+      {error && <p className="error-message">{error}</p>}
 
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+      <table className="history-table">
         <thead>
           <tr>
-            <th style={{ textAlign: "left", borderBottom: "1px solid #ddd", padding: 8 }}>
+            <th className="table-header">
               Created
             </th>
-            <th style={{ textAlign: "left", borderBottom: "1px solid #ddd", padding: 8 }}>
+            <th className="table-header">
               Expression
             </th>
-            <th style={{ textAlign: "left", borderBottom: "1px solid #ddd", padding: 8 }}>
+            <th className="table-header">
               Answer
             </th>
           </tr>
@@ -52,13 +53,13 @@ export function HistoryPage(): JSX.Element {
         <tbody>
           {rows.map((r) => (
             <tr key={r.id}>
-              <td style={{ borderBottom: "1px solid #eee", padding: 8 }}>
+              <td className="table-cell">
                 {new Date(r.createdAt).toLocaleString()}
               </td>
-              <td style={{ borderBottom: "1px solid #eee", padding: 8 }}>
+              <td className="table-cell">
                 {r.a} {r.op} {r.b}
               </td>
-              <td style={{ borderBottom: "1px solid #eee", padding: 8 }}>
+              <td className="table-cell">
                 {r.answer}
               </td>
             </tr>
