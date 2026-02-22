@@ -1,5 +1,5 @@
 import React from "react";
-import { CalculatorPage } from "./pages/calculatorPage";
+import { CalculatorPage } from "./pages/CalculatorPage.tsx";
 import { HistoryPage } from "./pages/History";
 import "./App.css";
 import {useState} from "react";
@@ -11,8 +11,6 @@ export default function App(): React.ReactElement {
         
         { (showCalculatorPage == true ?<CalculatorPage /> : <HistoryPage />)}
         <button onClick={() => setshowCalculatorPage(!showCalculatorPage)}>Click me</button>
-
-         
       </div>
   );
 }
